@@ -111,7 +111,6 @@ metadata {
         }
 
         standardTile("testTTS", "device.status", inactiveLabel:false, decoration:"flat") {
-            //state "default", label:"Test", action:"__testTTS"
             state "default", label:"Test", icon:"http://statusbits.github.io/icons/vlcthing.png", action:"__testTTS"
         }
 
@@ -307,9 +306,9 @@ def refresh() {
     STATE()
 
     setNetworkId(settings.confIpAddr, settings.confTcpPort)
-    //if (device.currentValue('status') == null) {
+    if (device.currentValue('status') == null) {
         setDefaults()
-    //}
+    }
 
     return vlcGetStatus()
 }
