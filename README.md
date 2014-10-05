@@ -55,19 +55,19 @@ to install VLC Media Player.
 3. **VLC Thing** uses HTTP interface to communicate with the VLC Media Player.
 The HTTP interface is disabled by default. You will have to enable the HTTP
 interface by following the instructions available here:
-- for [Linux](http://hobbyistsoftware.com/VLCSetup-linux)
-- for [Windows](http://hobbyistsoftware.com/vlcsetup-win-manual)
-- for [Mac OS](http://hobbyistsoftware.com/vlcsetup-mac-manual)
+ - for [Linux](http://hobbyistsoftware.com/VLCSetup-linux)
+ - for [Windows](http://hobbyistsoftware.com/vlcsetup-win-manual)
+ - for [Mac OS](http://hobbyistsoftware.com/vlcsetup-mac-manual)
 
 
 Installing and Configuring VLC Thing Device Handler
 ---------------------------------------------------
 
 **Note:** VLC Thing is a SmartThings *device handler*. Installing SmartThings
-custom device is a somewhat complicated process, so please these instructions
-carefully. First, you will need to install and self-publish the SmartDevice
-*Type*, then you will need to create an instance of the new SmartDevice. Both
-steps must be performed in the SmartThings Web-based
+custom device is a somewhat complicated process, so please read these
+instructions carefully. First, you will need to install and self-publish the
+SmartDevice *Type*, then you will need to create an instance of the new
+SmartDevice. Both steps must be performed in the SmartThings Web-based
 [IDE](https://graph.api.smartthings.com).
 
 **1. Installing VLC Thing SmartDevice Type**
@@ -124,13 +124,13 @@ should now appear on the "Things" page.
 
 1. Tap on the gear icon in the upper right corner of the **VLC Thing** tile to
 open device details page.
-2. Tap on the "Preferences" tile at the bottom of the page to open device
+2. Tap on the "Preferences" tile at the bottom of the page to open the device
 preferences page.
 3. In the **VLC Thing** preferences page, enter IP address and TCP port of
 the computer with installed VLC Media Player and a password you have
 configured during VLC Media Player configuration.
-4. Tap Done button in the upper right corner of the preferences page.
-5. To verify that the "VLC Thing" and the VLC player are configured correctly,
+4. Tap the "Done" button in the upper right corner of the preferences page.
+5. To verify that the **VLC Thing** and the VLC player are configured correctly,
 tap the "Test" tile below the volume control. You should hear a phrase "VLC
 for SmartThings is brought to you by Statusbits.com."
 
