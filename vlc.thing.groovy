@@ -25,7 +25,7 @@
  *  The latest version of this file can be found at:
  *  https://github.com/statusbits/smartthings-vlc/
  *
- *  Version 1.0.0 (2014-10-04)
+ *  Version 1.0.1 (2014-10-05)
  */
 
 import groovy.json.JsonSlurper
@@ -314,14 +314,14 @@ def refresh() {
 }
 
 def enqueue(uri) {
-	TRACE("enqueue(${uri})")
+    TRACE("enqueue(${uri})")
     def command = "command=in_enqueue&input=" + URLEncoder.encode(uri, "UTF-8")
     return vlcCommand(command)
 }
 
 def seek(trackNumber) {
-	TRACE("seek(${trackNumber})")
-	def command = "command=pl_play&id=${trackNumber}"
+    TRACE("seek(${trackNumber})")
+    def command = "command=pl_play&id=${trackNumber}"
     return vlcCommand(command, 500)
 }
 
@@ -340,7 +340,7 @@ def playTrackAndRestore(uri, duration, volume = null) {
     def currentMute = device.currentValue('mute')
     def actions = []
     if (currentStatus == 'playing') {
-        actions << vlcGet("/requests/status.json?command=pl_stop")
+        actions << vlcCommand("command=pl_stop")
         actions << delayHubAction(500)
     }
 
@@ -354,19 +354,17 @@ def playTrackAndRestore(uri, duration, volume = null) {
 
     actions << playTrack(uri)
     actions << delayHubAction((duration + 1) * 1000)
-    actions << vlcGet("/requests/status.json?command=pl_stop")
-
-    if (volume) {
-        actions << setLevel(currentVolume)
-    }
+    actions << vlcCommand("command=pl_stop")
+    actions << delayHubAction(500)
 
     if (currentMute == 'muted') {
         actions << mute()
+    } else if (volume) {
+        actions << setLevel(currentVolume)
     }
 
-    actions << delayHubAction(500)
-    actions << vlcGet("/requests/status.json")
-    actions.flatten()
+    actions << vlcGetStatus()
+    actions = actions.flatten()
     //log.debug "actions: ${actions}"
 
     return actions
@@ -396,7 +394,7 @@ def playSoundAndTrack(uri, duration, trackData, volume = null) {
 def __testTTS() {
     TRACE("__testTTS()")
     def text = "VLC for Smart Things is brought to you by Statusbits.com"
-    return playText(text)
+    return playTextAndResume(text)
 }
 
 // Sets device Network ID in 'AAAAAAAA:PPPP' format
