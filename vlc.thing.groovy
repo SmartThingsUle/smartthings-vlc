@@ -25,7 +25,7 @@
  *  The latest version of this file can be found at:
  *  https://github.com/statusbits/smartthings-vlc/
  *
- *  Version 1.0.1 (2014-10-05)
+ *  Version 1.1.0 (2014-11-03)
  */
 
 import groovy.json.JsonSlurper
@@ -44,6 +44,7 @@ metadata {
         capability "Actuator"
         capability "Switch"
         capability "Music Player"
+        capability "Speech Synthesis"
         capability "Refresh"
         capability "Polling"
 
@@ -292,6 +293,14 @@ def unmute() {
     }
 
     return null
+}
+
+// SpeechSynthesis.speak
+def speak(text) {
+    TRACE("speak(${text})")
+
+    def sound = textToSpeech(text, true)
+    return playTrack(sound.uri)
 }
 
 // polling.poll 

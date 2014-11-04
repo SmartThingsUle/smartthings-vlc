@@ -135,6 +135,19 @@ tap the "Test" tile below the volume control. You should hear a phrase "VLC
 for SmartThings is brought to you by Statusbits.com."
 
 
+Revision History
+----------------
+
+**Version 1.1.0. Released 2014-11-03**
+* Implemented new 'Speech Synthesis' capability for text-to-speech applications.
+
+**Version 1.0.1. Released 2014-10-05**
+* Fixed Issue #1 - Exception thrown when calling device.playTrackAndRestore().
+
+**Version 1.0.0. Released 2014-10-04**
+* First public release.
+
+
 License
 -------
 
